@@ -6,12 +6,11 @@
   <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
 
-  <!-- 🐨 add Babel to the page.
-       💰 Here is the script tag that'll do the job:
+  <!-- 💣 remove this line -->
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
-  -->
+  <!-- 💣 remove this line -->
 
-  <script type="module">
+  <script type="text/babel">
     // 🐨 on the script tag above, change `type="module"`
     // to `type="text/babel"` so babel will compile this code for the browser to run.
 
@@ -21,12 +20,21 @@
       children: 'Hello World',
     })
 
+    // With JSX
+    const elementClassName = 'container';
+    const elementChildren = 'Hello World!';
+
+    // When spreading props, if variable names match up directly with the attribute name it does not need to be specified
+    // Ex: const className = 'container' could be given as {className} then spread
+    const elementProps = {children: elementChildren, className: elementClassName}
+    const elementWithJSX = <div {...elementProps}></div>;
+
     // 💰 there are a few subtle differences between JSX and HTML. One such
     // difference is how you apply a class to an element in JSX is by using
     // `className` rather than `class`!
     // 📜 You can learn the differences between JSX and HTML syntax from the React docs here:
     // https://reactjs.org/docs/dom-elements.html#differences-in-attributes
 
-    ReactDOM.render(element, document.getElementById('root'))
+    ReactDOM.render(elementWithJSX, document.getElementById('root'))
   </script>
 </body>
