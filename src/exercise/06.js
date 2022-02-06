@@ -2,7 +2,7 @@
 // http://localhost:3000/isolated/exercise/06.js
 
 import * as React from 'react'
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 function UsernameForm({onSubmitUsername}) {
   // 🐨 add a submit event handler here (`handleSubmit`).
@@ -16,22 +16,26 @@ function UsernameForm({onSubmitUsername}) {
   // 💰 For example: event.target.elements[0].value
   // 🐨 Call `onSubmitUsername` with the value of the input
 
-  const usernameRef = useRef(null);
-  const [errorState, setErrorState] = useState("");
+  // const usernameRef = useRef(null);
+  // const [errorState, setErrorState] = useState("");
+  const [usernameValue, setUsernameValue] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(!errorState) {
-      let username = usernameRef.current.value;
-      onSubmitUsername(username);
-    }
+    // if(!errorState) {
+    //   let username = usernameRef.current.value;
+    //   onSubmitUsername(username);
+    // }
+
+     onSubmitUsername(usernameValue);
   } 
 
   const handleChange = (event) => {
     const value = event.target.value;
-    const isValidUsername = value === value.toLowerCase();
+    // const isValidUsername = value === value.toLowerCase();
+    // setErrorState(isValidUsername ? "" : "Username must be lower case");
 
-    setErrorState(isValidUsername ? "" : "Username must be lower case");
+    setUsernameValue(value.toLowerCase());
   }
 
   // 🐨 add the onSubmit handler to the <form> below
@@ -41,11 +45,11 @@ function UsernameForm({onSubmitUsername}) {
     <form onSubmit={handleSubmit}>
       <div>
         <label>Username:
-          <input type="text" id="usernameInput" ref={usernameRef} onChange={handleChange} />
+          <input type="text" id="usernameInput" onChange={handleChange} value={usernameValue}/>
         </label>
       </div>
-      <div role="alert">{errorState}</div>
-      <button type="submit" disabled={errorState}>Submit</button>
+      {/* <div role="alert">{errorState}</div> */}
+      <button type="submit">Submit</button>
     </form>
   )
 }
