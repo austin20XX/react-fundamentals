@@ -5,10 +5,9 @@
   <div id="root"></div>
 
   <!-- 🐨 add React and ReactDOM on the page.
-       💰 Here are script tags that'll do the job:
+       💰 Here are script tags that'll do the job: -->
   <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
-  -->
 
   <script type="module">
     const rootElement = document.getElementById('root')
@@ -25,5 +24,21 @@
     // 🐨 Please re-implement the regular document.createElement code above
     // with these React API calls
     // 💰 The example in the markdown file should be a good hint for you.
+
+  
+    // React.createElement(type, [props], [...children])
+    const extraCredit1 = React.createElement('span', null, 'Hello ');
+    const extraCredit2 = React.createElement('span', null, 'World');
+
+    const elementProps = {
+                          id: 'new-react-element', 
+                          className: 'container',
+                          children: [extraCredit1, extraCredit2],
+                        };
+    
+    const reactElement = React.createElement('div', elementProps);
+
+    // ReactDOM.render(element, container[, callback])
+    ReactDOM.render(reactElement, rootElement);
   </script>
 </body>
