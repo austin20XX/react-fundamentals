@@ -17,13 +17,16 @@
 			// 	</ul>
 			// </div>
 
+			const samsFoods = ['Green eggs', 'Ham'];
+			const listItems = samsFoods.map((food, index) => (createElement('li', {key: index, children: food})));
+			const unorderedList = createElement('ul', {className: 'sams-food', children: listItems});
+
 			const element = createElement(
 				'div',
 				{ className: 'container' },
-				createElement('span', null, 'Hello'),
-				' ',
-				createElement('span', null, 'World'),
-			)
+				createElement('p', {children: "Here's Sams's favorite food:"}),
+				unorderedList,
+			);
 
 			createRoot(rootElement).render(element)
 		</script>
