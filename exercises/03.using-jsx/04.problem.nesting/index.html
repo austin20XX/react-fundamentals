@@ -8,12 +8,18 @@
 
 			const rootElement = document.getElementById('root')
 
+			const samsFoods = ['Green eggs', 'Ham'];
+			const listItems = samsFoods.map((food, index) => (<li key={index}>{food}</li>));
+			const unorderedList = <ul className='sams-food'>{listItems}</ul> 
+
 			const element = (
 				<div className="container">
 					{/* 💡 TIP: this is how you do comments inside JSX elements! */}
 					{/* 🐨 put a paragraph tag with the contents "Here's Sam's favorite food:" */}
 					{/* 🐨 add a ul with the class "sams-food" */}
 					{/* 🐨 add li elements for "Green eggs" and "Ham" */}
+					<p> Here's Sams's favorite food: </p>
+					{unorderedList}
 				</div>
 			)
 
