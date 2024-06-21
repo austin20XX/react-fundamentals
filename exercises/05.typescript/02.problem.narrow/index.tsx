@@ -10,7 +10,7 @@ const operations = {
 type CalculatorProps = {
 	left: number
 	// 🦺 limit the operator to be only +, -, *, or /
-	operator: "+" | "-" | "*" | "/" 
+	operator: keyof (typeof operations)
 	right: number
 }
 function Calculator({ left, operator, right }: CalculatorProps) {
