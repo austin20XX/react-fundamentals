@@ -8,16 +8,11 @@ import { createRoot } from 'react-dom/client'
 // 💯 as a bonus, have this accept any number of additional props (typed as React.ComponentProps<'div'>)
 // and apply those to the rendered div as well.
 
-const Box = (props: React.ComponentProps<"div">) => {
-	const {
-		className,
-		style = {},
-		children
-	} = props;
-
+const Box = ({className, style = {}, children, ...props}: React.ComponentProps<"div">) => {
 	return  <div
 		className={`box ${className}`}
-		style={{ fontStyle: 'italic', backgroundColor: style.backgroundColor || 'none' }}
+		style={{ fontStyle: 'italic', ...style}}
+		{...props}
 	>
 		{children}
 	</div> ;
@@ -29,6 +24,7 @@ const smallBox = (
 	<Box
 		className="box--small"
 		style={{ backgroundColor: 'lightblue' }}
+		fakeProp = "fakeProp"
 	>
 		small lightblue box
 	</Box>
