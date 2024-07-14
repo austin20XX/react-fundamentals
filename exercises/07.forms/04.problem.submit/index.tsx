@@ -4,6 +4,15 @@ function App() {
 	return (
 		<form
 			action="api/onboarding"
+			method="POST"
+			encType='multipart/form-data'
+			onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+				event.preventDefault();
+				const formData = new FormData(event.currentTarget);
+
+				console.log(Object.fromEntries(formData))
+
+			}}
 			// 🦉 Follow these instructions in order. Test the behavior after each step
 			// 1️⃣ 🐨 set the method to "POST" then update api.server.ts to handle the POST request
 			// 2️⃣ 🐨 set the encType to "multipart/form-data"
